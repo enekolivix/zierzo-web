@@ -1,0 +1,853 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estimación de Costes Logísticos | E-commerce de Equipaje</title>
+    <meta name="description" content="Dashboard estratégico de costes logísticos para e-commerce de maletas y equipaje. Análisis por categoría con métricas de distribución, márgenes y peso volumétrico.">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Background animated grid -->
+    <div class="bg-grid"></div>
+    <div class="bg-gradient-orb bg-orb-1"></div>
+    <div class="bg-gradient-orb bg-orb-2"></div>
+    <div class="bg-gradient-orb bg-orb-3"></div>
+
+    <!-- Header -->
+    <header class="header" id="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="header-left">
+                    <div class="logo">
+                        <div class="logo-icon">
+                            <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+                                <rect x="4" y="8" width="24" height="18" rx="3" stroke="currentColor" stroke-width="2"/>
+                                <path d="M11 8V5a5 5 0 0 1 10 0v3" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                                <circle cx="12" cy="26" r="2" fill="currentColor"/>
+                                <circle cx="20" cy="26" r="2" fill="currentColor"/>
+                                <line x1="16" y1="12" x2="16" y2="22" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                                <line x1="11" y1="17" x2="21" y2="17" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                            </svg>
+                        </div>
+                        <div>
+                            <h1 class="logo-text">LuggageOps</h1>
+                            <span class="logo-sub">Supply Chain Analytics</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="header-right">
+                    <div class="header-badge">
+                        <span class="badge-dot"></span>
+                        Análisis en tiempo real
+                    </div>
+                    <div class="header-date" id="headerDate"></div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-tag">
+                <span class="hero-tag-icon">📊</span>
+                Documento Estratégico · Dirección de Operaciones
+            </div>
+            <h2 class="hero-title">
+                Estimación de <span class="gradient-text">Costes Logísticos</span>
+            </h2>
+            <p class="hero-subtitle">
+                Análisis integral de la estructura de costes de distribución para e-commerce de maletas y equipaje. 
+                Desglose por partida, categoría de producto y métricas de rentabilidad.
+            </p>
+            <div class="hero-stats">
+                <div class="hero-stat">
+                    <span class="hero-stat-value" data-count="4">0</span>
+                    <span class="hero-stat-label">Categorías</span>
+                </div>
+                <div class="hero-stat">
+                    <span class="hero-stat-value" data-count="5">0</span>
+                    <span class="hero-stat-label">Partidas de coste</span>
+                </div>
+                <div class="hero-stat">
+                    <span class="hero-stat-value" data-count="20" data-suffix="+">0</span>
+                    <span class="hero-stat-label">KPIs analizados</span>
+                </div>
+                <div class="hero-stat">
+                    <span class="hero-stat-value" data-count="147693" data-prefix="€" data-format="currency">0</span>
+                    <span class="hero-stat-label">Facturación mensual est.</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Category Selector -->
+    <section class="section" id="categories">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-number">01</span>
+                <h3 class="section-title">Selecciona una Categoría de Producto</h3>
+                <p class="section-desc">Cada categoría tiene una estructura de costes logísticos radicalmente diferente debido al impacto del peso volumétrico.</p>
+            </div>
+            <div class="category-grid">
+                <button class="category-card active" data-category="neceser" id="cat-neceser">
+                    <div class="category-icon">🧴</div>
+                    <div class="category-info">
+                        <h4>Neceser</h4>
+                        <span class="category-dims">30 × 21 × 15 cm</span>
+                    </div>
+                    <div class="category-price">39,95 €</div>
+                    <div class="category-indicator"></div>
+                </button>
+                <button class="category-card" data-category="cabina" id="cat-cabina">
+                    <div class="category-icon">🛫</div>
+                    <div class="category-info">
+                        <h4>Maleta de Mano</h4>
+                        <span class="category-dims">55 × 40 × 20 cm</span>
+                    </div>
+                    <div class="category-price">129,95 €</div>
+                    <div class="category-indicator"></div>
+                </button>
+                <button class="category-card" data-category="mediana" id="cat-mediana">
+                    <div class="category-icon">🎒</div>
+                    <div class="category-info">
+                        <h4>Maleta 10 kg</h4>
+                        <span class="category-dims">65 × 44 × 26 cm</span>
+                    </div>
+                    <div class="category-price">174,95 €</div>
+                    <div class="category-indicator"></div>
+                </button>
+                <button class="category-card" data-category="grande" id="cat-grande">
+                    <div class="category-icon">🧳</div>
+                    <div class="category-info">
+                        <h4>Maleta Grande</h4>
+                        <span class="category-dims">75 × 52 × 30 cm</span>
+                    </div>
+                    <div class="category-price">229,95 €</div>
+                    <div class="category-indicator"></div>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Cost Table -->
+    <section class="section" id="cost-table">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-number">02</span>
+                <h3 class="section-title">Estimación Básica de Costes Logísticos</h3>
+                <p class="section-desc">Desglose de las 5 partidas principales del coste logístico por pedido.</p>
+            </div>
+
+            <!-- Dynamic product header -->
+            <div class="product-header" id="productHeader">
+                <div class="product-header-left">
+                    <span class="product-emoji" id="productEmoji">🧴</span>
+                    <div>
+                        <h4 class="product-name" id="productName">Neceser / Vanity Case</h4>
+                        <span class="product-dims" id="productDims">30 × 21 × 15 cm · 8 L · PVP 39,95 €</span>
+                    </div>
+                </div>
+                <div class="product-header-right">
+                    <div class="weight-comparison">
+                        <div class="weight-item">
+                            <span class="weight-label">Peso Real</span>
+                            <span class="weight-value" id="pesoReal">1,0 kg</span>
+                        </div>
+                        <div class="weight-vs">
+                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                                <path d="M4 10h12M12 6l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
+                        <div class="weight-item weight-vol">
+                            <span class="weight-label">Peso Volumétrico</span>
+                            <span class="weight-value highlight" id="pesoVol">1,9 kg</span>
+                        </div>
+                        <div class="weight-factor" id="weightFactor">
+                            <span>×1,7</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Cost breakdown table -->
+            <div class="cost-table-wrapper">
+                <table class="main-table" id="mainTable">
+                    <thead>
+                        <tr>
+                            <th class="th-partida">Partida</th>
+                            <th class="th-estimation">Estimación €</th>
+                            <th class="th-percent">% sobre PVP</th>
+                            <th class="th-bar">Proporción</th>
+                            <th class="th-justification">Justificación breve</th>
+                        </tr>
+                    </thead>
+                    <tbody id="costTableBody">
+                        <!-- Filled dynamically -->
+                    </tbody>
+                    <tfoot>
+                        <tr class="total-row">
+                            <td class="total-label">
+                                <div class="total-icon">Σ</div>
+                                Coste logístico estimado por pedido
+                            </td>
+                            <td class="total-value" id="totalCost">—</td>
+                            <td class="total-percent" id="totalPercent">—</td>
+                            <td class="total-bar-cell">
+                                <div class="total-bar-container">
+                                    <div class="total-bar" id="totalBar"></div>
+                                </div>
+                            </td>
+                            <td class="total-justification">Suma de todas las partidas logísticas sin incluir coste de producto</td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+
+            <!-- Visual breakdown -->
+            <div class="cost-visual" id="costVisual">
+                <div class="cost-donut-section">
+                    <h5 class="visual-title">Distribución del coste logístico</h5>
+                    <div class="donut-container">
+                        <svg class="donut-chart" viewBox="0 0 200 200" id="donutChart">
+                            <!-- Filled dynamically -->
+                        </svg>
+                        <div class="donut-center" id="donutCenter">
+                            <span class="donut-total">—</span>
+                            <span class="donut-label">Total</span>
+                        </div>
+                    </div>
+                    <div class="donut-legend" id="donutLegend"></div>
+                </div>
+                <div class="cost-waterfall-section">
+                    <h5 class="visual-title">Cascada de costes: Del PVP al margen</h5>
+                    <div class="waterfall-chart" id="waterfallChart">
+                        <!-- Filled dynamically -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Comparative table - All 4 categories -->
+    <section class="section section-dark" id="comparison">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-number">03</span>
+                <h3 class="section-title">Comparativa de las 4 Categorías</h3>
+                <p class="section-desc">Visión consolidada de costes logísticos, márgenes y métricas clave por categoría de producto.</p>
+            </div>
+
+            <div class="comparison-table-wrapper">
+                <table class="comparison-table">
+                    <thead>
+                        <tr>
+                            <th class="comp-th-label">Partida</th>
+                            <th class="comp-th-cat">
+                                <span class="comp-icon">🧴</span>
+                                Neceser
+                            </th>
+                            <th class="comp-th-cat">
+                                <span class="comp-icon">🛫</span>
+                                Cabina
+                            </th>
+                            <th class="comp-th-cat">
+                                <span class="comp-icon">🎒</span>
+                                Mediana
+                            </th>
+                            <th class="comp-th-cat">
+                                <span class="comp-icon">🧳</span>
+                                Grande
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="comp-section-header">
+                            <td colspan="5">
+                                <span class="comp-section-icon">📏</span>
+                                Datos Físicos del Producto
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="comp-label">Dimensiones</td>
+                            <td>30×21×15 cm</td>
+                            <td>55×40×20 cm</td>
+                            <td>65×44×26 cm</td>
+                            <td>75×52×30 cm</td>
+                        </tr>
+                        <tr>
+                            <td class="comp-label">Volumen interno</td>
+                            <td>8 L</td>
+                            <td>36 L</td>
+                            <td>62 L</td>
+                            <td>100 L</td>
+                        </tr>
+                        <tr>
+                            <td class="comp-label">Peso real</td>
+                            <td>1,0 kg</td>
+                            <td>3,2 kg</td>
+                            <td>3,8 kg</td>
+                            <td>4,5 kg</td>
+                        </tr>
+                        <tr>
+                            <td class="comp-label">Peso volumétrico</td>
+                            <td><span class="comp-highlight">1,9 kg</span></td>
+                            <td><span class="comp-highlight">8,8 kg</span></td>
+                            <td><span class="comp-highlight">14,9 kg</span></td>
+                            <td><span class="comp-highlight danger">23,4 kg</span></td>
+                        </tr>
+                        <tr>
+                            <td class="comp-label">Factor Vol / Real</td>
+                            <td>×1,7</td>
+                            <td>×2,7</td>
+                            <td>×3,8</td>
+                            <td class="comp-danger">×5,2</td>
+                        </tr>
+
+                        <tr class="comp-section-header">
+                            <td colspan="5">
+                                <span class="comp-section-icon">📦</span>
+                                Costes Logísticos (por pedido)
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="comp-label">Picking</td>
+                            <td>0,55 €</td>
+                            <td>0,90 €</td>
+                            <td>1,10 €</td>
+                            <td>1,30 €</td>
+                        </tr>
+                        <tr>
+                            <td class="comp-label">Empaquetado</td>
+                            <td>0,35 €</td>
+                            <td>0,60 €</td>
+                            <td>0,70 €</td>
+                            <td>0,80 €</td>
+                        </tr>
+                        <tr>
+                            <td class="comp-label">Embalaje</td>
+                            <td>0,60 €</td>
+                            <td>2,20 €</td>
+                            <td>3,00 €</td>
+                            <td>4,00 €</td>
+                        </tr>
+                        <tr>
+                            <td class="comp-label">Transporte (última milla)</td>
+                            <td>3,20 €</td>
+                            <td>10,56 €</td>
+                            <td>16,39 €</td>
+                            <td><span class="comp-highlight danger">25,74 €</span></td>
+                        </tr>
+                        <tr>
+                            <td class="comp-label">Devolución (media ponderada)</td>
+                            <td>0,39 €</td>
+                            <td>2,32 €</td>
+                            <td>4,00 €</td>
+                            <td><span class="comp-highlight danger">6,42 €</span></td>
+                        </tr>
+                        <tr class="comp-total-row">
+                            <td class="comp-label"><strong>TOTAL Coste Logístico</strong></td>
+                            <td><strong>5,09 €</strong></td>
+                            <td><strong>16,58 €</strong></td>
+                            <td><strong>25,19 €</strong></td>
+                            <td><strong>38,26 €</strong></td>
+                        </tr>
+                        <tr>
+                            <td class="comp-label">% Logístico sobre PVP</td>
+                            <td><span class="comp-badge green">15,4%</span></td>
+                            <td><span class="comp-badge yellow">15,4%</span></td>
+                            <td><span class="comp-badge orange">17,4%</span></td>
+                            <td><span class="comp-badge red">20,1%</span></td>
+                        </tr>
+
+                        <tr class="comp-section-header">
+                            <td colspan="5">
+                                <span class="comp-section-icon">💰</span>
+                                Estructura de Precios y Márgenes
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="comp-label">PVP (IVA incluido)</td>
+                            <td><strong>39,95 €</strong></td>
+                            <td><strong>129,95 €</strong></td>
+                            <td><strong>174,95 €</strong></td>
+                            <td><strong>229,95 €</strong></td>
+                        </tr>
+                        <tr>
+                            <td class="comp-label">Coste producto (CIF)</td>
+                            <td>9,21 €</td>
+                            <td>41,21 €</td>
+                            <td>49,27 €</td>
+                            <td>57,32 €</td>
+                        </tr>
+                        <tr>
+                            <td class="comp-label">Coste total operativo</td>
+                            <td>15,41 €</td>
+                            <td>59,27 €</td>
+                            <td>75,94 €</td>
+                            <td>96,51 €</td>
+                        </tr>
+                        <tr>
+                            <td class="comp-label">Margen bruto (€)</td>
+                            <td>17,61 €</td>
+                            <td>48,13 €</td>
+                            <td>68,65 €</td>
+                            <td><span class="comp-highlight success">93,53 €</span></td>
+                        </tr>
+                        <tr>
+                            <td class="comp-label">Margen bruto (%)</td>
+                            <td><span class="comp-badge green">53,3%</span></td>
+                            <td><span class="comp-badge yellow">44,8%</span></td>
+                            <td><span class="comp-badge green">47,5%</span></td>
+                            <td><span class="comp-badge green">49,2%</span></td>
+                        </tr>
+                        <tr>
+                            <td class="comp-label">Margen post-devoluciones (%)</td>
+                            <td><span class="comp-badge green">52,3%</span></td>
+                            <td><span class="comp-badge yellow">43,0%</span></td>
+                            <td><span class="comp-badge green">45,2%</span></td>
+                            <td><span class="comp-badge green">46,4%</span></td>
+                        </tr>
+
+                        <tr class="comp-section-header">
+                            <td colspan="5">
+                                <span class="comp-section-icon">🔄</span>
+                                Logística Inversa (Devoluciones)
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="comp-label">Tasa de devolución</td>
+                            <td><span class="comp-badge green">4%</span></td>
+                            <td><span class="comp-badge yellow">8%</span></td>
+                            <td><span class="comp-badge orange">10%</span></td>
+                            <td><span class="comp-badge red">12%</span></td>
+                        </tr>
+                        <tr>
+                            <td class="comp-label">Coste por devolución</td>
+                            <td>9,80 €</td>
+                            <td>29,00 €</td>
+                            <td>40,00 €</td>
+                            <td><span class="comp-highlight danger">53,50 €</span></td>
+                        </tr>
+                        <tr>
+                            <td class="comp-label">Impacto en margen</td>
+                            <td>-0,98%</td>
+                            <td>-1,78%</td>
+                            <td>-2,29%</td>
+                            <td class="comp-danger">-2,79%</td>
+                        </tr>
+
+                        <tr class="comp-section-header">
+                            <td colspan="5">
+                                <span class="comp-section-icon">📈</span>
+                                Métricas de Inventario y Distribución
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="comp-label">Rotación de stock</td>
+                            <td>8×/año</td>
+                            <td>6×/año</td>
+                            <td>5×/año</td>
+                            <td>4×/año</td>
+                        </tr>
+                        <tr>
+                            <td class="comp-label">Días de stock objetivo</td>
+                            <td>45 días</td>
+                            <td>60 días</td>
+                            <td>72 días</td>
+                            <td>90 días</td>
+                        </tr>
+                        <tr>
+                            <td class="comp-label">Uds. por palet</td>
+                            <td>~96</td>
+                            <td>~24</td>
+                            <td>~12</td>
+                            <td>~8</td>
+                        </tr>
+                        <tr>
+                            <td class="comp-label">Mix de ventas</td>
+                            <td>15%</td>
+                            <td><span class="comp-highlight success">40%</span></td>
+                            <td>25%</td>
+                            <td>20%</td>
+                        </tr>
+                        <tr>
+                            <td class="comp-label">Rol estratégico</td>
+                            <td><span class="comp-role">Cross-sell / AOV booster</span></td>
+                            <td><span class="comp-role hero">Hero product</span></td>
+                            <td><span class="comp-role">Equilibrado</span></td>
+                            <td><span class="comp-role">Margen absoluto</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- Formula Section -->
+    <section class="section" id="formulas">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-number">04</span>
+                <h3 class="section-title">Fórmulas y Cálculos Clave</h3>
+                <p class="section-desc">Las fórmulas que determinan la estructura de costes logísticos en productos voluminosos.</p>
+            </div>
+
+            <div class="formula-grid">
+                <div class="formula-card">
+                    <div class="formula-header">
+                        <span class="formula-icon">⚖️</span>
+                        <h5>Peso Volumétrico</h5>
+                    </div>
+                    <div class="formula-body">
+                        <div class="formula-equation">
+                            <span class="formula-var">P<sub>vol</sub></span>
+                            <span class="formula-eq">=</span>
+                            <div class="formula-fraction">
+                                <span class="formula-num">L × A × H</span>
+                                <span class="formula-den">5.000</span>
+                            </div>
+                        </div>
+                        <div class="formula-example">
+                            <span class="formula-example-label">Ejemplo (Maleta Grande):</span>
+                            <div class="formula-calc">
+                                <span>(75 × 52 × 30) / 5.000 = <strong>23,4 kg</strong></span>
+                                <span class="formula-note">vs. 4,5 kg reales → Paga <span class="danger-text">5,2×</span> su peso</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="formula-card">
+                    <div class="formula-header">
+                        <span class="formula-icon">🏷️</span>
+                        <h5>PVP Óptimo con Envío Embebido</h5>
+                    </div>
+                    <div class="formula-body">
+                        <div class="formula-equation">
+                            <span class="formula-var">PVP</span>
+                            <span class="formula-eq">=</span>
+                            <div class="formula-fraction">
+                                <span class="formula-num">C<sub>prod</sub> + (C<sub>envío</sub> × 0,7) + C<sub>pack</sub></span>
+                                <span class="formula-den">1 − Margen<sub>obj</sub></span>
+                            </div>
+                        </div>
+                        <div class="formula-example">
+                            <span class="formula-example-label">Ejemplo (Cabina):</span>
+                            <div class="formula-calc">
+                                <span>(41,21 + 7,39 + 2,20) / (1 − 0,45) = <strong>92,36 €</strong> base</span>
+                                <span class="formula-note">Se redondea a 129,95 € para cubrir marketing y margen de seguridad</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="formula-card">
+                    <div class="formula-header">
+                        <span class="formula-icon">🔄</span>
+                        <h5>Coste Medio de Devolución Ponderado</h5>
+                    </div>
+                    <div class="formula-body">
+                        <div class="formula-equation">
+                            <span class="formula-var">C<sub>dev</sub></span>
+                            <span class="formula-eq">=</span>
+                            <span class="formula-var">Coste<sub>devol</sub></span>
+                            <span class="formula-eq">×</span>
+                            <span class="formula-var">Tasa<sub>devol</sub></span>
+                        </div>
+                        <div class="formula-example">
+                            <span class="formula-example-label">Ejemplo (Maleta Grande):</span>
+                            <div class="formula-calc">
+                                <span>53,50 € × 12% = <strong>6,42 €</strong> por pedido (media)</span>
+                                <span class="formula-note">Cada unidad vendida "carga" con 6,42 € de coste de devoluciones futuras</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="formula-card">
+                    <div class="formula-header">
+                        <span class="formula-icon">📏</span>
+                        <h5>Ahorro por Nesting (Sets Anidados)</h5>
+                    </div>
+                    <div class="formula-body">
+                        <div class="formula-equation">
+                            <span class="formula-var">Ahorro</span>
+                            <span class="formula-eq">=</span>
+                            <span class="formula-var">1 −</span>
+                            <div class="formula-fraction">
+                                <span class="formula-num">P<sub>vol(grande)</sub></span>
+                                <span class="formula-den">Σ P<sub>vol(todas)</sub></span>
+                            </div>
+                        </div>
+                        <div class="formula-example">
+                            <span class="formula-example-label">Ejemplo (Set 3 maletas):</span>
+                            <div class="formula-calc">
+                                <span>1 − (23,4 / 47,1) = <strong>50,3%</strong> de ahorro en envío</span>
+                                <span class="formula-note">~24,86 € ahorrados por set vendido</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- P&L Section -->
+    <section class="section section-dark" id="pnl">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-number">05</span>
+                <h3 class="section-title">P&L Mensual Simulado (1.000 pedidos)</h3>
+                <p class="section-desc">Cuenta de resultados estimada con desglose por categoría y partida.</p>
+            </div>
+
+            <div class="pnl-grid">
+                <div class="pnl-card pnl-revenue">
+                    <div class="pnl-card-header">
+                        <span class="pnl-icon">💶</span>
+                        <span class="pnl-label">Facturación Neta (sin IVA)</span>
+                    </div>
+                    <div class="pnl-value">147.693 €</div>
+                    <div class="pnl-bar-full"></div>
+                    <div class="pnl-sublabel">100% · 1.000 pedidos/mes</div>
+                </div>
+
+                <div class="pnl-card pnl-cost">
+                    <div class="pnl-card-header">
+                        <span class="pnl-icon">📦</span>
+                        <span class="pnl-label">Coste de Producto (CIF)</span>
+                    </div>
+                    <div class="pnl-value">−52.114 €</div>
+                    <div class="pnl-bar" style="--bar-width: 35.3%; --bar-color: var(--red-500)"></div>
+                    <div class="pnl-sublabel">35,3% sobre ventas</div>
+                </div>
+
+                <div class="pnl-card pnl-cost">
+                    <div class="pnl-card-header">
+                        <span class="pnl-icon">🚛</span>
+                        <span class="pnl-label">Coste de Distribución Total</span>
+                    </div>
+                    <div class="pnl-value">−20.987 €</div>
+                    <div class="pnl-bar" style="--bar-width: 14.2%; --bar-color: var(--orange-500)"></div>
+                    <div class="pnl-sublabel">14,2% sobre ventas</div>
+                </div>
+
+                <div class="pnl-card pnl-cost">
+                    <div class="pnl-card-header">
+                        <span class="pnl-icon">📋</span>
+                        <span class="pnl-label">Packaging + Pago + Plataforma</span>
+                    </div>
+                    <div class="pnl-value">−6.830 €</div>
+                    <div class="pnl-bar" style="--bar-width: 4.6%; --bar-color: var(--yellow-500)"></div>
+                    <div class="pnl-sublabel">4,6% sobre ventas</div>
+                </div>
+
+                <div class="pnl-card pnl-margin">
+                    <div class="pnl-card-header">
+                        <span class="pnl-icon">📊</span>
+                        <span class="pnl-label">MARGEN BRUTO</span>
+                    </div>
+                    <div class="pnl-value">57.762 €</div>
+                    <div class="pnl-bar" style="--bar-width: 39.1%; --bar-color: var(--green-500)"></div>
+                    <div class="pnl-sublabel">39,1% sobre ventas</div>
+                </div>
+
+                <div class="pnl-card pnl-cost">
+                    <div class="pnl-card-header">
+                        <span class="pnl-icon">🔄</span>
+                        <span class="pnl-label">Coste Neto de Devoluciones</span>
+                    </div>
+                    <div class="pnl-value">−4.894 €</div>
+                    <div class="pnl-bar" style="--bar-width: 3.3%; --bar-color: var(--red-400)"></div>
+                    <div class="pnl-sublabel">3,3% sobre ventas</div>
+                </div>
+
+                <div class="pnl-card pnl-cost">
+                    <div class="pnl-card-header">
+                        <span class="pnl-icon">📢</span>
+                        <span class="pnl-label">Marketing (CAC ~12 €/pedido)</span>
+                    </div>
+                    <div class="pnl-value">−12.000 €</div>
+                    <div class="pnl-bar" style="--bar-width: 8.1%; --bar-color: var(--purple-500)"></div>
+                    <div class="pnl-sublabel">8,1% sobre ventas</div>
+                </div>
+
+                <div class="pnl-card pnl-cost">
+                    <div class="pnl-card-header">
+                        <span class="pnl-icon">👥</span>
+                        <span class="pnl-label">Personal + Software + Gastos</span>
+                    </div>
+                    <div class="pnl-value">−11.200 €</div>
+                    <div class="pnl-bar" style="--bar-width: 7.6%; --bar-color: var(--slate-500)"></div>
+                    <div class="pnl-sublabel">7,6% sobre ventas</div>
+                </div>
+
+                <div class="pnl-card pnl-ebitda">
+                    <div class="pnl-card-header">
+                        <span class="pnl-icon">🏆</span>
+                        <span class="pnl-label">EBITDA</span>
+                    </div>
+                    <div class="pnl-value">29.668 €</div>
+                    <div class="pnl-bar" style="--bar-width: 20.1%; --bar-color: var(--emerald-500)"></div>
+                    <div class="pnl-sublabel">20,1% sobre ventas · Benchmark: 12-25%</div>
+                    <div class="pnl-benchmark">
+                        <div class="benchmark-bar">
+                            <div class="benchmark-range" style="left: 48%; width: 52%"></div>
+                            <div class="benchmark-marker" style="left: 80%">
+                                <span class="benchmark-label">20,1%</span>
+                            </div>
+                        </div>
+                        <div class="benchmark-labels">
+                            <span>0%</span>
+                            <span>12%</span>
+                            <span>25%</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sensitivity Analysis -->
+    <section class="section" id="sensitivity">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-number">06</span>
+                <h3 class="section-title">Análisis de Sensibilidad</h3>
+                <p class="section-desc">¿Qué variables impactan más en la rentabilidad? Simulación de escenarios.</p>
+            </div>
+
+            <div class="sensitivity-grid">
+                <div class="sens-card" data-impact="negative">
+                    <div class="sens-header">
+                        <span class="sens-icon">🚛</span>
+                        <span class="sens-label">Coste envío +10%</span>
+                    </div>
+                    <div class="sens-impact negative">
+                        <span class="sens-arrow">↓</span>
+                        <span class="sens-value">−2.099 €</span>
+                    </div>
+                    <div class="sens-percent">−7,1% EBITDA</div>
+                    <div class="sens-bar-container">
+                        <div class="sens-bar negative" style="--bar-width: 71%"></div>
+                    </div>
+                </div>
+
+                <div class="sens-card" data-impact="negative">
+                    <div class="sens-header">
+                        <span class="sens-icon">🔄</span>
+                        <span class="sens-label">Tasa devolución +2pp</span>
+                    </div>
+                    <div class="sens-impact negative">
+                        <span class="sens-arrow">↓</span>
+                        <span class="sens-value">−1.630 €</span>
+                    </div>
+                    <div class="sens-percent">−5,5% EBITDA</div>
+                    <div class="sens-bar-container">
+                        <div class="sens-bar negative" style="--bar-width: 55%"></div>
+                    </div>
+                </div>
+
+                <div class="sens-card" data-impact="positive">
+                    <div class="sens-header">
+                        <span class="sens-icon">🛒</span>
+                        <span class="sens-label">AOV +10% (upselling)</span>
+                    </div>
+                    <div class="sens-impact positive">
+                        <span class="sens-arrow">↑</span>
+                        <span class="sens-value">+3.846 €</span>
+                    </div>
+                    <div class="sens-percent">+13,0% EBITDA</div>
+                    <div class="sens-bar-container">
+                        <div class="sens-bar positive" style="--bar-width: 100%"></div>
+                    </div>
+                </div>
+
+                <div class="sens-card" data-impact="positive">
+                    <div class="sens-header">
+                        <span class="sens-icon">🪆</span>
+                        <span class="sens-label">Nesting 100% sets</span>
+                    </div>
+                    <div class="sens-impact positive">
+                        <span class="sens-arrow">↑</span>
+                        <span class="sens-value">+1.780 €</span>
+                    </div>
+                    <div class="sens-percent">+6,0% EBITDA</div>
+                    <div class="sens-bar-container">
+                        <div class="sens-bar positive" style="--bar-width: 46%"></div>
+                    </div>
+                </div>
+
+                <div class="sens-card" data-impact="positive">
+                    <div class="sens-header">
+                        <span class="sens-icon">📐</span>
+                        <span class="sens-label">Divisor 5000→6000</span>
+                    </div>
+                    <div class="sens-impact positive">
+                        <span class="sens-arrow">↑</span>
+                        <span class="sens-value">+2.800 €</span>
+                    </div>
+                    <div class="sens-percent">+9,4% EBITDA</div>
+                    <div class="sens-bar-container">
+                        <div class="sens-bar positive" style="--bar-width: 73%"></div>
+                    </div>
+                    <div class="sens-best">
+                        <span>⭐ Mayor palanca de negociación</span>
+                    </div>
+                </div>
+
+                <div class="sens-card" data-impact="negative">
+                    <div class="sens-header">
+                        <span class="sens-icon">📢</span>
+                        <span class="sens-label">CAC +25% (15€/pedido)</span>
+                    </div>
+                    <div class="sens-impact negative">
+                        <span class="sens-arrow">↓</span>
+                        <span class="sens-value">−3.000 €</span>
+                    </div>
+                    <div class="sens-percent">−10,1% EBITDA</div>
+                    <div class="sens-bar-container">
+                        <div class="sens-bar negative" style="--bar-width: 100%"></div>
+                    </div>
+                    <div class="sens-best worst">
+                        <span>⚠️ Mayor riesgo externo</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-left">
+                    <div class="footer-logo">
+                        <svg width="24" height="24" viewBox="0 0 32 32" fill="none">
+                            <rect x="4" y="8" width="24" height="18" rx="3" stroke="currentColor" stroke-width="2"/>
+                            <path d="M11 8V5a5 5 0 0 1 10 0v3" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
+                        <span>LuggageOps Analytics</span>
+                    </div>
+                    <p class="footer-disclaimer">Documento estratégico para uso académico/profesional. Datos estimados basados en benchmarks del sector e-commerce de equipaje en España (2025-2026).</p>
+                </div>
+                <div class="footer-right">
+                    <div class="footer-stat">
+                        <span class="footer-stat-value">COO</span>
+                        <span class="footer-stat-label">Dirección de Operaciones</span>
+                    </div>
+                    <div class="footer-stat">
+                        <span class="footer-stat-value">SCM</span>
+                        <span class="footer-stat-label">Supply Chain Management</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>

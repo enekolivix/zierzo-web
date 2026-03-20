@@ -3157,7 +3157,7 @@ ul {
     position: fixed;
     inset: 0;
     z-index: 10000;
-    background: rgba(0,0,0,0.4);
+    background: rgba(0, 0, 0, 0.4);
     backdrop-filter: blur(4px);
     opacity: 0;
     visibility: hidden;
@@ -3183,7 +3183,7 @@ ul {
     padding: 30px;
     transform: translateY(-20px);
     transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-    box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
 }
 
 .search-overlay.active .search-modal {
@@ -3202,7 +3202,8 @@ ul {
     font-weight: 600;
 }
 
-.search-close-btn, .account-close-btn {
+.search-close-btn,
+.account-close-btn {
     background: none;
     border: none;
     cursor: pointer;
@@ -3212,7 +3213,8 @@ ul {
     transition: all 0.3s;
 }
 
-.search-close-btn:hover, .account-close-btn:hover {
+.search-close-btn:hover,
+.account-close-btn:hover {
     background: var(--offwhite);
     color: var(--black);
 }
@@ -3255,7 +3257,8 @@ ul {
     gap: 12px;
 }
 
-.search-hint, .search-no-results {
+.search-hint,
+.search-no-results {
     text-align: center;
     color: var(--gray);
     font-size: 0.95rem;
@@ -3310,7 +3313,7 @@ ul {
     position: relative;
     transform: scale(0.95);
     transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-    box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
     text-align: center;
 }
 
@@ -3414,7 +3417,7 @@ ul {
     border-radius: 30px;
     font-size: 0.95rem;
     font-weight: 500;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
     z-index: 10000;
     opacity: 0;
     visibility: hidden;
@@ -3517,24 +3520,28 @@ ul {
     display: flex;
     gap: 12px;
 }
+
 /* Blog Nav Link in nav-right */
 .nav-blog-link {
     text-decoration: none;
-    color: var(--black);
-    font-size: 0.85rem;
-    font-weight: 600;
-    padding: 6px 14px;
-    margin-right: 8px;
-    background: rgba(183, 153, 98, 0.1);
+    color: var(--white);
+    font-size: 0.82rem;
+    font-weight: 700;
+    letter-spacing: 0.03em;
+    padding: 8px 16px;
+    margin-right: 12px;
+    background: var(--gold);
     border-radius: 20px;
     transition: all 0.3s ease;
     display: inline-flex;
     align-items: center;
+    box-shadow: 0 4px 10px rgba(183, 153, 98, 0.2);
 }
 
 .nav-blog-link:hover {
-    background: var(--gold);
+    background: var(--black);
     color: var(--white);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
 @media (max-width: 768px) {

@@ -3517,3 +3517,28 @@ ul {
     display: flex;
     gap: 12px;
 }
+/* Blog Nav Link in nav-right */
+.nav-blog-link {
+    text-decoration: none;
+    color: var(--black);
+    font-size: 0.85rem;
+    font-weight: 600;
+    padding: 6px 14px;
+    margin-right: 8px;
+    background: rgba(183, 153, 98, 0.1);
+    border-radius: 20px;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+}
+
+.nav-blog-link:hover {
+    background: var(--gold);
+    color: var(--white);
+}
+
+@media (max-width: 768px) {
+    .nav-blog-link {
+        display: none;
+    }
+}

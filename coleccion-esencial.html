@@ -48,14 +48,14 @@
             </div>
             <a href="zierzo.html" class="nav-logo"><span class="logo-z">Z</span>IERZO</a>
             <div class="nav-right">
-                <button class="nav-icon-btn" aria-label="Buscar">
+                <button class="nav-icon-btn" id="searchBtn" aria-label="Buscar">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                         stroke-width="1.5">
                         <circle cx="11" cy="11" r="8" />
                         <path d="m21 21-4.35-4.35" />
                     </svg>
                 </button>
-                <button class="nav-icon-btn" aria-label="Cuenta">
+                <button class="nav-icon-btn" id="accountBtn" aria-label="Cuenta">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                         stroke-width="1.5">
                         <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
@@ -193,7 +193,8 @@
                     <a href="zierzo.html" class="footer-logo"><span class="logo-z">Z</span>IERZO</a>
                     <p class="footer-tagline">Premium Luggage, Crafted for the Journey.</p>
                     <div class="footer-social">
-                        <a href="#" class="social-link" aria-label="Instagram">
+                        <a href="https://instagram.com/zierzobags" target="_blank" rel="noopener noreferrer"
+                            class="social-link" aria-label="Instagram">
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                 stroke-width="1.5">
                                 <rect x="2" y="2" width="20" height="20" rx="5" />
@@ -201,11 +202,21 @@
                                 <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
                             </svg>
                         </a>
-                        <a href="#" class="social-link" aria-label="Twitter">
+                        <a href="https://x.com/zierzobags" target="_blank" rel="noopener noreferrer" class="social-link"
+                            aria-label="Twitter">
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                 stroke-width="1.5">
                                 <path
                                     d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z" />
+                            </svg>
+                        </a>
+                        <a href="https://pinterest.com/zierzobags" target="_blank" rel="noopener noreferrer"
+                            class="social-link" aria-label="Pinterest">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="1.5">
+                                <path d="M8 12a4 4 0 0 1 8 0c0 4-2 6-4 8" />
+                                <circle cx="12" cy="12" r="10" />
+                                <path d="M9 17c1 0 2-.5 2.5-1" />
                             </svg>
                         </a>
                     </div>
@@ -216,32 +227,38 @@
                         <li><a href="coleccion-esencial.html">Colección Esencial</a></li>
                         <li><a href="coleccion-signature.html">Colección Signature</a></li>
                         <li><a href="coleccion-nomada.html">Colección Nómada</a></li>
-                        <li><a href="zierzo.html#products">Productos Destacados</a></li>
+                        <li><a href="#products">Productos Destacados</a></li>
                     </ul>
                 </div>
                 <div class="footer-col">
                     <h4>Empresa</h4>
                     <ul>
-                        <li><a href="zierzo.html#story">Nuestra Historia</a></li>
-                        <li><a href="#">Sostenibilidad</a></li>
-                        <li><a href="#">Contacto</a></li>
+                        <li><a href="#story">Nuestra Historia</a></li>
+                        <li><a href="blog.html">Blog de Viajes</a></li>
+                        <li><a href="#" title="Próximamente">Sostenibilidad</a></li>
+                        <li><a href="#" title="Próximamente">Contacto</a></li>
                     </ul>
                 </div>
                 <div class="footer-col">
                     <h4>Soporte</h4>
                     <ul>
-                        <li><a href="#">Centro de ayuda</a></li>
-                        <li><a href="#">Garantía</a></li>
-                        <li><a href="#">Devoluciones</a></li>
-                        <li><a href="#">Política de privacidad</a></li>
+                        <li><a href="#" title="Próximamente">Centro de ayuda</a></li>
+                        <li><a href="#" title="Próximamente">Seguimiento de pedido</a></li>
+                        <li><a href="#" title="Próximamente">Garantía</a></li>
+                        <li><a href="#" title="Próximamente">Devoluciones</a></li>
+                        <li><a href="#" title="Próximamente">Política de privacidad</a></li>
                     </ul>
                 </div>
             </div>
             <div class="footer-bottom">
                 <span>© 2026 ZIERZO BAGS. Todos los derechos reservados.</span>
                 <div class="footer-payment">
-                    <span>Visa</span><span>Mastercard</span><span>PayPal</span><span>Apple Pay</span><span>Google
-                        Pay</span><span>Klarna</span>
+                    <span>Visa</span>
+                    <span>Mastercard</span>
+                    <span>PayPal</span>
+                    <span>Apple Pay</span>
+                    <span>Google Pay</span>
+                    <span>Klarna</span>
                 </div>
             </div>
         </div>
@@ -282,6 +299,7 @@
                 <span>Subtotal</span>
                 <strong id="cartSubtotal">0,00 €</strong>
             </div>
+            <div id="cartSavingsContainer"></div>
             <button class="btn btn-primary cart-checkout-btn"
                 onclick="alert('Checkout disponible en la página principal')">Tramitar Pedido
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -337,6 +355,64 @@
         </div>
     </div>
 
+    <!-- ===== Search Modal ===== -->
+    <div class="search-overlay" id="searchOverlay">
+        <div class="search-modal">
+            <div class="search-modal-header">
+                <h3>Buscar productos</h3>
+                <button class="search-close-btn" id="searchCloseBtn" aria-label="Cerrar búsqueda">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="1.5">
+                        <path d="M18 6 6 18M6 6l12 12" />
+                    </svg>
+                </button>
+            </div>
+            <div class="search-input-wrapper">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <circle cx="11" cy="11" r="8" />
+                    <path d="m21 21-4.35-4.35" />
+                </svg>
+                <input type="text" id="searchInput" class="search-input" placeholder="¿Qué estás buscando?"
+                    autocomplete="off">
+            </div>
+            <div class="search-results" id="searchResults">
+                <p class="search-hint">Escribe para buscar maletas, colecciones y más...</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== Account Modal ===== -->
+    <div class="account-overlay" id="accountOverlay">
+        <div class="account-modal">
+            <button class="account-close-btn" id="accountCloseBtn" aria-label="Cerrar cuenta">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <path d="M18 6 6 18M6 6l12 12" />
+                </svg>
+            </button>
+            <div class="account-modal-content">
+                <div class="account-icon">
+                    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1">
+                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+                        <circle cx="12" cy="7" r="4" />
+                    </svg>
+                </div>
+                <h3>Iniciar sesión</h3>
+                <p class="account-subtitle">Accede a tu cuenta para gestionar pedidos y favoritos.</p>
+                <form class="account-form" id="accountForm" onsubmit="event.preventDefault();">
+                    <div class="account-field">
+                        <label>Email</label>
+                        <input type="email" placeholder="tu@email.com" class="account-input">
+                    </div>
+                    <div class="account-field">
+                        <label>Contraseña</label>
+                        <input type="password" placeholder="••••••••" class="account-input">
+                    </div>
+                    <button type="submit" class="btn btn-primary account-login-btn">Iniciar sesión</button>
+                    <p class="account-register">¿No tienes cuenta? <a href="#">Regístrate</a></p>
+                </form>
+            </div>
+        </div>
+    </div>
     <script>
         // Product data for this collection
         const PRODUCTS = [
@@ -351,23 +427,81 @@
         function updateCartUI() {
             const countEl = document.querySelector('.cart-count');
             const panelCount = document.getElementById('cartPanelCount');
+            const panelBody = document.getElementById('cartPanelBody');
             const cartItems = document.getElementById('cartItems');
             const cartEmpty = document.getElementById('cartEmpty');
             const footer = document.getElementById('cartPanelFooter');
             const subtotalEl = document.getElementById('cartSubtotal');
             const totalQty = cart.reduce((s, i) => s + i.qty, 0);
             const subtotal = cart.reduce((s, i) => s + i.price * i.qty, 0);
+            const totalSavings = cart.reduce((s, i) => s + (i.oldPrice ? (i.oldPrice - i.price) * i.qty : 0), 0);
+
             countEl.textContent = totalQty;
             panelCount.textContent = `(${totalQty})`;
-            if (cart.length === 0) { cartEmpty.style.display = 'flex'; cartItems.innerHTML = ''; footer.style.display = 'none'; }
-            else {
-                cartEmpty.style.display = 'none'; footer.style.display = 'block';
+
+            if (cart.length === 0) {
+                cartEmpty.style.display = 'flex';
+                cartItems.innerHTML = '';
+                footer.style.display = 'none';
+            } else {
+                cartEmpty.style.display = 'none';
+                footer.style.display = 'block';
                 subtotalEl.textContent = subtotal.toLocaleString('es-ES', { minimumFractionDigits: 2 }) + ' €';
-                cartItems.innerHTML = cart.map((item, idx) => `<div class="cart-item"><img src="${item.img}" alt="${item.name}" class="cart-item-img"><div class="cart-item-info"><h4>${item.name}</h4><span class="cart-item-color">${item.color}</span><div class="cart-item-qty-row"><div class="cart-item-qty"><button onclick="changeQty(${idx},-1)">−</button><span>${item.qty}</span><button onclick="changeQty(${idx},1)">+</button></div><strong>${(item.price * item.qty).toLocaleString('es-ES', { minimumFractionDigits: 2 })} €</strong></div></div><button class="cart-item-remove" onclick="removeItem(${idx})" aria-label="Eliminar"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 6 6 18M6 6l12 12"/></svg></button></div>`).join('');
+                // Show savings
+                let savingsHTML = '';
+                if (totalSavings > 0) {
+                    savingsHTML = `<div class="cart-savings"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg> Ahorras ${totalSavings.toLocaleString('es-ES', { minimumFractionDigits: 2 })} €</div>`;
+                }
+                const savingsContainer = document.getElementById('cartSavingsContainer');
+                if (savingsContainer) savingsContainer.innerHTML = savingsHTML;
+                cartItems.innerHTML = cart.map((item, idx) => {
+                    const hasDiscount = item.oldPrice && item.oldPrice > item.price;
+                    const itemSaving = hasDiscount ? (item.oldPrice - item.price) * item.qty : 0;
+                    return `
+                    <div class="cart-item">
+                        <img src="${item.img}" alt="${item.name}" class="cart-item-img">
+                        <div class="cart-item-info">
+                            <h4>${item.name}</h4>
+                            <span class="cart-item-color">${item.color}</span>
+                            ${hasDiscount ? `<div class="cart-item-discount"><span class="cart-item-old-price">${item.oldPrice.toLocaleString('es-ES', { minimumFractionDigits: 2 })} €</span><span class="cart-item-save">-${itemSaving.toLocaleString('es-ES', { minimumFractionDigits: 2 })} €</span></div>` : ''}
+                            <div class="cart-item-qty-row">
+                                <div class="cart-item-qty">
+                                    <button onclick="changeQty(${idx},-1)">−</button>
+                                    <span>${item.qty}</span>
+                                    <button onclick="changeQty(${idx},1)">+</button>
+                                </div>
+                                <strong>${(item.price * item.qty).toLocaleString('es-ES', { minimumFractionDigits: 2 })} €</strong>
+                            </div>
+                        </div>
+                        <button class="cart-item-remove" onclick="removeItem(${idx})" aria-label="Eliminar">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 6 6 18M6 6l12 12"/></svg>
+                        </button>
+                    </div>
+                `;
+                }).join('');
             }
         }
-        function addToCart(productId, color, qty = 1) { const p = PRODUCTS.find(pr => pr.id === productId); if (!p) return; const e = cart.find(i => i.id === productId && i.color === color); if (e) e.qty += qty; else cart.push({ id: p.id, name: p.name, img: p.img, price: p.price, color, qty }); updateCartUI(); }
-        function changeQty(idx, d) { cart[idx].qty += d; if (cart[idx].qty <= 0) cart.splice(idx, 1); updateCartUI(); }
+        const MAX_QTY = 10;
+
+        function addToCart(productId, color, qty = 1) {
+            const product = PRODUCTS.find(p => p.id === productId);
+            if (!product) return;
+            const existing = cart.find(i => i.id === productId && i.color === color);
+            if (existing) {
+                const newQty = existing.qty + qty;
+                if (newQty > MAX_QTY) {
+                    existing.qty = MAX_QTY;
+                    showMaxQtyMsg();
+                } else {
+                    existing.qty = newQty;
+                }
+            } else {
+                const addQty = Math.min(qty, MAX_QTY);
+                cart.push({ id: product.id, name: product.name, img: product.img, price: product.price, oldPrice: product.oldPrice || null, color, qty: addQty });
+            }
+            updateCartUI();
+        }
+
         function removeItem(idx) { cart.splice(idx, 1); updateCartUI(); }
 
         const cartPanel = document.getElementById('cartPanel'), cartOverlay = document.getElementById('cartOverlay'), cartCloseBtn = document.getElementById('cartCloseBtn');
@@ -381,41 +515,115 @@
         const pdpModal = document.getElementById('pdpModal'), pdpOverlay = document.getElementById('pdpOverlay');
         let pdpCurrentProduct = null, pdpQty = 1, pdpSelectedColor = '';
         function openPDP(productId) {
-            const p = PRODUCTS.find(pr => pr.id === productId); if (!p) return;
-            pdpCurrentProduct = p; pdpQty = 1; pdpSelectedColor = p.colors[0].name;
-            document.getElementById('pdpMainImg').src = p.img; document.getElementById('pdpMainImg').alt = p.name;
-            document.getElementById('pdpCollection').textContent = p.collection; document.getElementById('pdpTitle').textContent = p.name;
+            const p = PRODUCTS.find(pr => pr.id === productId);
+            if (!p) return;
+            pdpCurrentProduct = p;
+            pdpQty = 1;
+            pdpSelectedColor = p.colors[0].name;
+            document.getElementById('pdpMainImg').src = p.img;
+            document.getElementById('pdpMainImg').alt = p.name;
+            document.getElementById('pdpCollection').textContent = p.collection;
+            document.getElementById('pdpTitle').textContent = p.name;
             document.getElementById('pdpPrice').textContent = p.price.toLocaleString('es-ES', { minimumFractionDigits: 2 }) + ' €';
-            const oldEl = document.getElementById('pdpPriceOld'); oldEl.textContent = p.oldPrice ? p.oldPrice.toLocaleString('es-ES', { minimumFractionDigits: 2 }) + ' €' : ''; oldEl.style.display = p.oldPrice ? 'inline' : 'none';
-            document.getElementById('pdpDescription').textContent = p.description; document.getElementById('pdpQtyVal').textContent = '1';
-            document.getElementById('pdpColors').innerHTML = p.colors.map((c, i) => `<span class="pdp-color-dot${i === 0 ? ' active' : ''}" style="--dot-color:${c.hex}" title="${c.name}" data-color="${c.name}"></span>`).join('');
+            const oldEl = document.getElementById('pdpPriceOld');
+            if (p.oldPrice) {
+                oldEl.textContent = p.oldPrice.toLocaleString('es-ES', { minimumFractionDigits: 2 }) + ' €';
+                oldEl.style.display = 'inline';
+            } else {
+                oldEl.textContent = '';
+                oldEl.style.display = 'none';
+            }
+            // Show savings badge in PDP
+            let savingsEl = document.getElementById('pdpSavings');
+            if (!savingsEl) {
+                savingsEl = document.createElement('span');
+                savingsEl.id = 'pdpSavings';
+                savingsEl.className = 'pdp-savings-badge';
+                document.querySelector('.pdp-price-row').appendChild(savingsEl);
+            }
+            if (p.oldPrice) {
+                const saving = p.oldPrice - p.price;
+                savingsEl.textContent = 'Ahorras ' + saving.toLocaleString('es-ES', { minimumFractionDigits: 2 }) + ' €';
+                savingsEl.style.display = 'inline-flex';
+            } else {
+                savingsEl.style.display = 'none';
+            }
+            document.getElementById('pdpDescription').textContent = p.description;
+            document.getElementById('pdpQtyVal').textContent = '1';
+
+            // Set Viajero: per-maleta color selector
+            if (p.id === 'set-viajero') {
+                const maletas = ['Cabina', 'Mediana', 'Grande'];
+                document.getElementById('pdpColors').innerHTML = `
+                    <div class="set-color-selectors">
+                        ${maletas.map((m, mi) => `
+                            <div class="set-color-row">
+                                <span class="set-color-label">${m}:</span>
+                                <div class="set-color-dots" data-maleta="${mi}">
+                                    ${p.colors.map((c, ci) => `<span class="pdp-color-dot${ci === 0 ? ' active' : ''}" style="--dot-color:${c.hex}" title="${c.name}" data-color="${c.name}"></span>`).join('')}
+                                </div>
+                            </div>
+                        `).join('')}
+                    </div>`;
+                // Wire per-maleta dot clicks
+                document.querySelectorAll('.set-color-dots').forEach(group => {
+                    group.querySelectorAll('.pdp-color-dot').forEach(d => {
+                        d.addEventListener('click', function () {
+                            group.querySelectorAll('.pdp-color-dot').forEach(x => x.classList.remove('active'));
+                            this.classList.add('active');
+                        });
+                    });
+                });
+                pdpSelectedColor = p.colors[0].name; // default
+            } else {
+                document.getElementById('pdpColors').innerHTML = p.colors.map((c, i) =>
+                    `<span class="pdp-color-dot${i === 0 ? ' active' : ''}" style="--dot-color:${c.hex}" title="${c.name}" data-color="${c.name}"></span>`
+                ).join('');
+                // Color dot clicks
+                document.querySelectorAll('.pdp-color-dot').forEach(d => {
+                    d.addEventListener('click', function () {
+                        document.querySelectorAll('.pdp-color-dot').forEach(x => x.classList.remove('active'));
+                        this.classList.add('active');
+                        pdpSelectedColor = this.dataset.color;
+                    });
+                });
+            }
+
             document.getElementById('pdpSpecsList').innerHTML = p.specs.map(s => `<li>${s}</li>`).join('');
-            document.querySelectorAll('.pdp-color-dot').forEach(d => { d.addEventListener('click', function () { document.querySelectorAll('.pdp-color-dot').forEach(x => x.classList.remove('active')); this.classList.add('active'); pdpSelectedColor = this.dataset.color; }); });
-            pdpModal.classList.add('open'); pdpOverlay.classList.add('open'); document.body.style.overflow = 'hidden';
+
+            pdpModal.classList.add('open');
+            pdpOverlay.classList.add('open');
+            document.body.style.overflow = 'hidden';
         }
-        function closePDP() { pdpModal.classList.remove('open'); pdpOverlay.classList.remove('open'); document.body.style.overflow = ''; }
+
+        function closePDP() {
+            pdpModal.classList.remove('open');
+            pdpOverlay.classList.remove('open');
+            document.body.style.overflow = '';
+        }
+
         document.getElementById('pdpCloseBtn').addEventListener('click', closePDP);
         pdpOverlay.addEventListener('click', closePDP);
-        document.getElementById('pdpQtyMinus').addEventListener('click', () => { if (pdpQty > 1) { pdpQty--; document.getElementById('pdpQtyVal').textContent = pdpQty; } });
-        document.getElementById('pdpQtyPlus').addEventListener('click', () => { pdpQty++; document.getElementById('pdpQtyVal').textContent = pdpQty; });
-        document.getElementById('pdpAddBtn').addEventListener('click', () => { if (!pdpCurrentProduct) return; addToCart(pdpCurrentProduct.id, pdpSelectedColor, pdpQty); closePDP(); setTimeout(openCart, 300); });
 
-        // Wire collection detail cards
-        document.querySelectorAll('.col-detail-card').forEach(card => {
-            const pid = card.dataset.productId;
-            const product = PRODUCTS.find(p => p.id === pid); if (!product) return;
-            card.querySelector('.col-detail-img-wrapper').addEventListener('click', () => openPDP(pid));
-            card.querySelector('.col-detail-img-wrapper').style.cursor = 'pointer';
-            card.querySelector('.col-detail-name').addEventListener('click', () => openPDP(pid));
-            card.querySelector('.col-detail-name').style.cursor = 'pointer';
-            card.querySelector('.col-detail-btn').addEventListener('click', function (e) {
-                e.stopPropagation(); addToCart(pid, product.colors[0].name);
-                const btn = this, orig = btn.innerHTML; btn.innerHTML = '✓ Añadido'; btn.style.background = '#16a34a';
-                setTimeout(() => { btn.innerHTML = orig; btn.style.background = ''; }, 1500); setTimeout(openCart, 400);
-            });
-            card.addEventListener('mouseenter', function () { this.style.transform = 'translateY(-8px)'; });
-            card.addEventListener('mouseleave', function () { this.style.transform = ''; });
+        document.getElementById('pdpQtyMinus').addEventListener('click', () => {
+            if (pdpQty > 1) { pdpQty--; document.getElementById('pdpQtyVal').textContent = pdpQty; }
         });
+        document.getElementById('pdpQtyPlus').addEventListener('click', () => {
+            if (pdpQty < MAX_QTY) { pdpQty++; document.getElementById('pdpQtyVal').textContent = pdpQty; }
+            else { showMaxQtyMsg(); }
+        });
+
+        document.getElementById('pdpAddBtn').addEventListener('click', () => {
+            if (!pdpCurrentProduct) return;
+            // For set-viajero, build composite color string
+            if (pdpCurrentProduct.id === 'set-viajero') {
+                const selectors = document.querySelectorAll('.set-color-dots');
+                const maletas = ['Cabina', 'Mediana', 'Grande'];
+                const colors = [];
+                selectors.forEach((g, i) => {
+                    const active = g.querySelector('.pdp-color-dot.active');
+                    colors.push(maletas[i] + ': ' + (active ? active.dataset.color : pdpCurrentProduct.colors[0].name));
+                });
 
         // Nav scroll
         const nav = document.getElementById('mainNav'), menuToggle = document.getElementById('menuToggle'), mobileMenu = document.getElementById('mobileMenu');
@@ -430,6 +638,111 @@
 
         // Show body immediately (no preloader on subpages)
         document.body.classList.add('loaded');
+
+        // ========== Favorites Toggle ==========
+        document.querySelectorAll('.product-action-btn[aria-label="Favorito"]').forEach(btn => {
+            btn.addEventListener('click', function (e) {
+                e.stopPropagation();
+                const svg = this.querySelector('svg');
+                const path = this.querySelector('path');
+                const isFav = this.classList.toggle('favorited');
+                if (isFav) {
+                    svg.setAttribute('fill', '#e74c3c');
+                    svg.setAttribute('stroke', '#e74c3c');
+                } else {
+                    svg.setAttribute('fill', 'none');
+                    svg.setAttribute('stroke', 'currentColor');
+                }
+            });
+        });
+
+        // ========== Search Modal ==========
+        const searchOverlay = document.getElementById('searchOverlay');
+        const searchInput = document.getElementById('searchInput');
+        const searchResults = document.getElementById('searchResults');
+
+        function openSearch() {
+            searchOverlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+            setTimeout(() => searchInput.focus(), 300);
+        }
+        function closeSearch() {
+            searchOverlay.classList.remove('active');
+            document.body.style.overflow = '';
+            searchInput.value = '';
+            searchResults.innerHTML = '<p class="search-hint">Escribe para buscar maletas, colecciones y más...</p>';
+        }
+
+        document.getElementById('searchBtn').addEventListener('click', openSearch);
+        document.getElementById('searchCloseBtn').addEventListener('click', closeSearch);
+        searchOverlay.addEventListener('click', function (e) { if (e.target === this) closeSearch(); });
+
+        searchInput.addEventListener('input', function () {
+            const q = this.value.toLowerCase().trim();
+            if (!q) {
+                searchResults.innerHTML = '<p class="search-hint">Escribe para buscar maletas, colecciones y más...</p>';
+                return;
+            }
+            const results = PRODUCTS.filter(p =>
+                p.name.toLowerCase().includes(q) ||
+                p.collection.toLowerCase().includes(q) ||
+                p.category.toLowerCase().includes(q) ||
+                p.description.toLowerCase().includes(q)
+            );
+            if (results.length === 0) {
+                searchResults.innerHTML = '<p class="search-no-results">No se encontraron resultados para "' + q + '"</p>';
+                return;
+            }
+            searchResults.innerHTML = results.map(p => `
+                <div class="search-result-item" onclick="closeSearch(); openPDP('${p.id}')">
+                    <img src="${p.img}" alt="${p.name}" class="search-result-img">
+                    <div class="search-result-info">
+                        <strong>${p.name}</strong>
+                        <span>${p.collection} · ${p.price.toLocaleString('es-ES', { minimumFractionDigits: 2 })} €</span>
+                    </div>
+                </div>
+            `).join('');
+        });
+
+        // ========== Account Modal ==========
+        const accountOverlay = document.getElementById('accountOverlay');
+
+        function openAccount() {
+            accountOverlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+        function closeAccount() {
+            accountOverlay.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        document.getElementById('accountBtn').addEventListener('click', openAccount);
+        document.getElementById('accountCloseBtn').addEventListener('click', closeAccount);
+        accountOverlay.addEventListener('click', function (e) { if (e.target === this) closeAccount(); });
+
+        document.getElementById('accountForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+            const btn = this.querySelector('.account-login-btn');
+            btn.textContent = '✓ Sesión iniciada';
+            btn.style.background = '#16a34a';
+            setTimeout(() => closeAccount(), 1500);
+            setTimeout(() => { btn.textContent = 'Iniciar sesión'; btn.style.background = ''; }, 2000);
+        });
+
+        // ========== Color Dot Image Tint ==========
+        document.querySelectorAll('.product-card').forEach((card, idx) => {
+            const img = card.querySelector('.product-img');
+            card.querySelectorAll('.color-dot').forEach(dot => {
+                dot.addEventListener('click', function () {
+                    const color = this.getAttribute('title');
+                    if (color === 'Negro') img.style.filter = 'brightness(0.6) saturate(0)';
+                    else if (color === 'Champagne') img.style.filter = 'sepia(0.4) saturate(1.2) brightness(1.05)';
+                    else if (color === 'Silver') img.style.filter = 'saturate(0) brightness(1.1)';
+                    else if (color === 'Verde Militar') img.style.filter = 'sepia(0.3) hue-rotate(60deg) saturate(0.7)';
+                    else img.style.filter = '';
+                });
+            });
+        });
     </script>
 </body>
 

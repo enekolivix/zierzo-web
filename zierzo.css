@@ -3139,3 +3139,381 @@ ul {
         font-size: 1.5rem;
     }
 }
+
+/* ============================
+   NEW FEATURES (Search, Account, Favorites, Limits, Discounts)
+   ============================ */
+
+/* Favorites */
+.product-action-btn.favorited svg {
+    fill: #e74c3c;
+    stroke: #e74c3c;
+    transition: all 0.3s ease;
+}
+
+/* Modals Overlay (Shared) */
+.search-overlay,
+.account-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 10000;
+    background: rgba(0,0,0,0.4);
+    backdrop-filter: blur(4px);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.search-overlay.active,
+.account-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Search Modal */
+.search-modal {
+    background: var(--white);
+    width: 100%;
+    max-width: 600px;
+    border-radius: 20px;
+    padding: 30px;
+    transform: translateY(-20px);
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+}
+
+.search-overlay.active .search-modal {
+    transform: translateY(0);
+}
+
+.search-modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+}
+
+.search-modal-header h3 {
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+.search-close-btn, .account-close-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--gray);
+    padding: 8px;
+    border-radius: 50%;
+    transition: all 0.3s;
+}
+
+.search-close-btn:hover, .account-close-btn:hover {
+    background: var(--offwhite);
+    color: var(--black);
+}
+
+.search-input-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    margin-bottom: 24px;
+}
+
+.search-input-wrapper svg {
+    position: absolute;
+    left: 16px;
+    color: var(--gray);
+}
+
+.search-input {
+    width: 100%;
+    padding: 16px 16px 16px 48px;
+    border: 1.5px solid var(--border);
+    border-radius: 12px;
+    font-size: 1rem;
+    font-family: inherit;
+    outline: none;
+    transition: border-color 0.3s;
+}
+
+.search-input:focus {
+    border-color: var(--gold);
+}
+
+.search-results {
+    max-height: 350px;
+    overflow-y: auto;
+    border-top: 1px solid var(--border);
+    padding-top: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.search-hint, .search-no-results {
+    text-align: center;
+    color: var(--gray);
+    font-size: 0.95rem;
+    padding: 20px 0;
+}
+
+.search-result-item {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 12px;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.search-result-item:hover {
+    background: var(--offwhite);
+}
+
+.search-result-img {
+    width: 60px;
+    height: 60px;
+    border-radius: 8px;
+    object-fit: cover;
+    background: var(--offwhite);
+}
+
+.search-result-info {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.search-result-info strong {
+    font-size: 0.95rem;
+    color: var(--black);
+}
+
+.search-result-info span {
+    font-size: 0.85rem;
+    color: var(--gray);
+}
+
+/* Account Modal */
+.account-modal {
+    background: var(--white);
+    width: 100%;
+    max-width: 440px;
+    border-radius: 20px;
+    padding: 40px;
+    position: relative;
+    transform: scale(0.95);
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+    text-align: center;
+}
+
+.account-overlay.active .account-modal {
+    transform: scale(1);
+}
+
+.account-close-btn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+}
+
+.account-icon {
+    width: 80px;
+    height: 80px;
+    background: var(--offwhite);
+    color: var(--gold);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 24px;
+}
+
+.account-modal h3 {
+    font-size: 1.5rem;
+    font-family: 'Playfair Display', serif;
+    margin-bottom: 8px;
+}
+
+.account-subtitle {
+    color: var(--gray);
+    font-size: 0.95rem;
+    margin-bottom: 32px;
+}
+
+.account-form {
+    text-align: left;
+}
+
+.account-field {
+    margin-bottom: 20px;
+}
+
+.account-field label {
+    display: block;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--darkgray);
+    margin-bottom: 8px;
+}
+
+.account-input {
+    width: 100%;
+    padding: 14px 16px;
+    border: 1.5px solid var(--border);
+    border-radius: 10px;
+    font-size: 0.95rem;
+    font-family: inherit;
+    outline: none;
+    transition: border-color 0.3s;
+}
+
+.account-input:focus {
+    border-color: var(--gold);
+}
+
+.account-login-btn {
+    width: 100%;
+    padding: 16px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+.account-register {
+    text-align: center;
+    font-size: 0.9rem;
+    color: var(--gray);
+}
+
+.account-register a {
+    color: var(--gold);
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.account-register a:hover {
+    text-decoration: underline;
+}
+
+/* Max Qty Toast */
+.max-qty-toast {
+    position: fixed;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%) translateY(20px);
+    background: var(--black);
+    color: var(--white);
+    padding: 14px 24px;
+    border-radius: 30px;
+    font-size: 0.95rem;
+    font-weight: 500;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    z-index: 10000;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.max-qty-toast.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(0);
+}
+
+/* Cart Savings & Discounts */
+.cart-item-discount {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 4px;
+}
+
+.cart-item-old-price {
+    font-size: 0.8rem;
+    color: var(--gray);
+    text-decoration: line-through;
+}
+
+.cart-item-save {
+    font-size: 0.75rem;
+    color: #e74c3c;
+    font-weight: 600;
+    background: rgba(231, 76, 60, 0.1);
+    padding: 2px 6px;
+    border-radius: 4px;
+}
+
+.cart-savings {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #16a34a;
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin-top: 12px;
+    padding-top: 12px;
+    border-top: 1px dashed var(--border);
+}
+
+.pdp-savings-badge {
+    background: #e74c3c;
+    color: var(--white);
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 4px 8px;
+    border-radius: 6px;
+    line-height: 1;
+    display: inline-flex;
+    align-items: center;
+}
+
+#pdpPriceOld {
+    font-size: 1rem;
+    color: var(--gray);
+    text-decoration: line-through;
+    margin-left: 12px;
+    font-weight: 500;
+}
+
+/* Product Card Color Filter Transition */
+.product-img {
+    transition: filter 0.4s ease;
+}
+
+/* Set Viajero PDP Selectors */
+.set-color-selectors {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    width: 100%;
+}
+
+.set-color-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px 0;
+    border-bottom: 1px solid var(--warm-gray-100);
+}
+
+.set-color-row:last-child {
+    border-bottom: none;
+}
+
+.set-color-label {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--warm-gray-700);
+}
+
+.set-color-dots {
+    display: flex;
+    gap: 12px;
+}

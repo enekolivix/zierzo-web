@@ -48,14 +48,14 @@
             </div>
             <a href="zierzo.html" class="nav-logo"><span class="logo-z">Z</span>IERZO</a>
             <div class="nav-right">
-                <button class="nav-icon-btn" aria-label="Buscar">
+                <button class="nav-icon-btn" id="searchBtn" aria-label="Buscar">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                         stroke-width="1.5">
                         <circle cx="11" cy="11" r="8" />
                         <path d="m21 21-4.35-4.35" />
                     </svg>
                 </button>
-                <button class="nav-icon-btn" aria-label="Cuenta">
+                <button class="nav-icon-btn" id="accountBtn" aria-label="Cuenta">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                         stroke-width="1.5">
                         <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
@@ -192,6 +192,34 @@
                 <div class="footer-brand">
                     <a href="zierzo.html" class="footer-logo"><span class="logo-z">Z</span>IERZO</a>
                     <p class="footer-tagline">Premium Luggage, Crafted for the Journey.</p>
+                    <div class="footer-social">
+                        <a href="https://instagram.com/zierzobags" target="_blank" rel="noopener noreferrer"
+                            class="social-link" aria-label="Instagram">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="1.5">
+                                <rect x="2" y="2" width="20" height="20" rx="5" />
+                                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+                                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
+                            </svg>
+                        </a>
+                        <a href="https://x.com/zierzobags" target="_blank" rel="noopener noreferrer" class="social-link"
+                            aria-label="Twitter">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="1.5">
+                                <path
+                                    d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z" />
+                            </svg>
+                        </a>
+                        <a href="https://pinterest.com/zierzobags" target="_blank" rel="noopener noreferrer"
+                            class="social-link" aria-label="Pinterest">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="1.5">
+                                <path d="M8 12a4 4 0 0 1 8 0c0 4-2 6-4 8" />
+                                <circle cx="12" cy="12" r="10" />
+                                <path d="M9 17c1 0 2-.5 2.5-1" />
+                            </svg>
+                        </a>
+                    </div>
                 </div>
                 <div class="footer-col">
                     <h4>Tienda</h4>
@@ -199,28 +227,39 @@
                         <li><a href="coleccion-esencial.html">Colección Esencial</a></li>
                         <li><a href="coleccion-signature.html">Colección Signature</a></li>
                         <li><a href="coleccion-nomada.html">Colección Nómada</a></li>
+                        <li><a href="#products">Productos Destacados</a></li>
                     </ul>
                 </div>
                 <div class="footer-col">
                     <h4>Empresa</h4>
                     <ul>
-                        <li><a href="zierzo.html#story">Nuestra Historia</a></li>
-                        <li><a href="#">Contacto</a></li>
+                        <li><a href="#story">Nuestra Historia</a></li>
+                        <li><a href="blog.html">Blog de Viajes</a></li>
+                        <li><a href="#" title="Próximamente">Sostenibilidad</a></li>
+                        <li><a href="#" title="Próximamente">Contacto</a></li>
                     </ul>
                 </div>
                 <div class="footer-col">
                     <h4>Soporte</h4>
                     <ul>
-                        <li><a href="#">Garantía</a></li>
-                        <li><a href="#">Devoluciones</a></li>
-                        <li><a href="#">Política de privacidad</a></li>
+                        <li><a href="#" title="Próximamente">Centro de ayuda</a></li>
+                        <li><a href="#" title="Próximamente">Seguimiento de pedido</a></li>
+                        <li><a href="#" title="Próximamente">Garantía</a></li>
+                        <li><a href="#" title="Próximamente">Devoluciones</a></li>
+                        <li><a href="#" title="Próximamente">Política de privacidad</a></li>
                     </ul>
                 </div>
             </div>
             <div class="footer-bottom">
                 <span>© 2026 ZIERZO BAGS. Todos los derechos reservados.</span>
-                <div class="footer-payment"><span>Visa</span><span>Mastercard</span><span>PayPal</span><span>Apple
-                        Pay</span><span>Google Pay</span><span>Klarna</span></div>
+                <div class="footer-payment">
+                    <span>Visa</span>
+                    <span>Mastercard</span>
+                    <span>PayPal</span>
+                    <span>Apple Pay</span>
+                    <span>Google Pay</span>
+                    <span>Klarna</span>
+                </div>
             </div>
         </div>
     </footer>
@@ -314,6 +353,111 @@
         const observer = new IntersectionObserver(e => { e.forEach(en => { if (en.isIntersecting) en.target.classList.add('visible') }) }, { threshold: 0.1 });
         document.querySelectorAll('.col-detail-card,.collection-page-hero').forEach(el => { el.classList.add('animate-on-scroll'); observer.observe(el) });
         document.body.classList.add('loaded');
+
+        // ========== Favorites Toggle ==========
+        document.querySelectorAll('.product-action-btn[aria-label="Favorito"]').forEach(btn => {
+            btn.addEventListener('click', function (e) {
+                e.stopPropagation();
+                const svg = this.querySelector('svg');
+                const path = this.querySelector('path');
+                const isFav = this.classList.toggle('favorited');
+                if (isFav) {
+                    svg.setAttribute('fill', '#e74c3c');
+                    svg.setAttribute('stroke', '#e74c3c');
+                } else {
+                    svg.setAttribute('fill', 'none');
+                    svg.setAttribute('stroke', 'currentColor');
+                }
+            });
+        });
+
+        // ========== Search Modal ==========
+        const searchOverlay = document.getElementById('searchOverlay');
+        const searchInput = document.getElementById('searchInput');
+        const searchResults = document.getElementById('searchResults');
+
+        function openSearch() {
+            searchOverlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+            setTimeout(() => searchInput.focus(), 300);
+        }
+        function closeSearch() {
+            searchOverlay.classList.remove('active');
+            document.body.style.overflow = '';
+            searchInput.value = '';
+            searchResults.innerHTML = '<p class="search-hint">Escribe para buscar maletas, colecciones y más...</p>';
+        }
+
+        document.getElementById('searchBtn').addEventListener('click', openSearch);
+        document.getElementById('searchCloseBtn').addEventListener('click', closeSearch);
+        searchOverlay.addEventListener('click', function (e) { if (e.target === this) closeSearch(); });
+
+        searchInput.addEventListener('input', function () {
+            const q = this.value.toLowerCase().trim();
+            if (!q) {
+                searchResults.innerHTML = '<p class="search-hint">Escribe para buscar maletas, colecciones y más...</p>';
+                return;
+            }
+            const results = PRODUCTS.filter(p =>
+                p.name.toLowerCase().includes(q) ||
+                p.collection.toLowerCase().includes(q) ||
+                p.category.toLowerCase().includes(q) ||
+                p.description.toLowerCase().includes(q)
+            );
+            if (results.length === 0) {
+                searchResults.innerHTML = '<p class="search-no-results">No se encontraron resultados para "' + q + '"</p>';
+                return;
+            }
+            searchResults.innerHTML = results.map(p => `
+                <div class="search-result-item" onclick="closeSearch(); openPDP('${p.id}')">
+                    <img src="${p.img}" alt="${p.name}" class="search-result-img">
+                    <div class="search-result-info">
+                        <strong>${p.name}</strong>
+                        <span>${p.collection} · ${p.price.toLocaleString('es-ES', { minimumFractionDigits: 2 })} €</span>
+                    </div>
+                </div>
+            `).join('');
+        });
+
+        // ========== Account Modal ==========
+        const accountOverlay = document.getElementById('accountOverlay');
+
+        function openAccount() {
+            accountOverlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+        function closeAccount() {
+            accountOverlay.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        document.getElementById('accountBtn').addEventListener('click', openAccount);
+        document.getElementById('accountCloseBtn').addEventListener('click', closeAccount);
+        accountOverlay.addEventListener('click', function (e) { if (e.target === this) closeAccount(); });
+
+        document.getElementById('accountForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+            const btn = this.querySelector('.account-login-btn');
+            btn.textContent = '✓ Sesión iniciada';
+            btn.style.background = '#16a34a';
+            setTimeout(() => closeAccount(), 1500);
+            setTimeout(() => { btn.textContent = 'Iniciar sesión'; btn.style.background = ''; }, 2000);
+        });
+
+        // ========== Color Dot Image Tint ==========
+        document.querySelectorAll('.product-card').forEach((card, idx) => {
+            const img = card.querySelector('.product-img');
+            card.querySelectorAll('.color-dot').forEach(dot => {
+                dot.addEventListener('click', function () {
+                    const color = this.getAttribute('title');
+                    if (color === 'Negro') img.style.filter = 'brightness(0.6) saturate(0)';
+                    else if (color === 'Champagne') img.style.filter = 'sepia(0.4) saturate(1.2) brightness(1.05)';
+                    else if (color === 'Silver') img.style.filter = 'saturate(0) brightness(1.1)';
+                    else if (color === 'Verde Militar') img.style.filter = 'sepia(0.3) hue-rotate(60deg) saturate(0.7)';
+                    else img.style.filter = '';
+                });
+            });
+        });
     </script>
 </body>
 

@@ -3526,12 +3526,11 @@ ul {
     text-decoration: none;
     color: var(--gold);
     /* Cream/Gold color */
-    font-size: 0.95rem;
+    font-size: 1rem;
     /* Slightly larger */
     font-weight: 800;
     /* Extra bold */
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
+    text-transform: lowercase;
     padding: 6px 12px;
     margin-right: 4px;
     transition: all 0.3s ease;

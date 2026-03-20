@@ -626,6 +626,14 @@
                     const active = g.querySelector('.pdp-color-dot.active');
                     colors.push(maletas[i] + ': ' + (active ? active.dataset.color : pdpCurrentProduct.colors[0].name));
                 });
+                addToCart(pdpCurrentProduct.id, colors.join(', '), pdpQty);
+            } else {
+                addToCart(pdpCurrentProduct.id, pdpSelectedColor, pdpQty);
+            }
+            
+            closePDP();
+            setTimeout(openCart, 300);
+        });
 
         // Nav scroll
         const nav = document.getElementById('mainNav'), menuToggle = document.getElementById('menuToggle'), mobileMenu = document.getElementById('mobileMenu');
